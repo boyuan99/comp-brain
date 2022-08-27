@@ -1,2 +1,2 @@
-from .circuit import default_circuit
-from .node import *
+from .circuit import Circuit
+from .node import BaseComponent

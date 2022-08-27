@@ -1,6 +1,6 @@
-from core.node import BaseComponent
 import numpy as np
 from collections import OrderedDict
+from core import BaseComponent
 
 
 class MorrisLecarNeuron(BaseComponent):
@@ -17,20 +17,22 @@ class MorrisLecarNeuron(BaseComponent):
         g_L=0.5, g_Ca=1.1, g_K=2.0,
     )
 
-    def __init__(self, **kwargs):
-        super(MorrisLecarNeuron, self).__init__()
+    def __init__(self, name, **kwargs):
+        super(MorrisLecarNeuron, self).__init__(name, **kwargs)
         self.params = OrderedDict(self.Default_Params.copy())
+        self.states = OrderedDict(self.Default_States.copy())
         self.value = [self.Default_States['V'], self.Default_States['N']]
-        self.value_array = self.value_array.append(self.value)
+        self.value_array = np.append(self.value_array, self.value)
 
-        for key, val in kwargs.items():
-            if key in self.params:
-                self.params[key] = val
-            elif key in self.states:
-                self.states[key] = val
-                self.initial_states[key] = val
-            else:
-                raise err.CompNeuroModelError(f"Unrecognized argument {key}")
+        if 'params' in kwargs.keys():
+            for key, val in kwargs['params'].items():
+                if key in self.params:
+                    self.params[key] = val
+                elif key in self.states:
+                    self.states[key] = val
+                    self.initial_states[key] = val
+                else:
+                    raise ValueError(f"Unrecognized argument {key}")
 
     def compute(self, I_syn):
         V = self.value[0]
