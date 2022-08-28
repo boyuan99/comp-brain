@@ -1,6 +1,5 @@
 neurons:
   R1:
-    model: Morris-Lecar
     V_1: 30.0
     V_2: 15.0
     V_3: 0.0
@@ -14,7 +13,6 @@ neurons:
     g_Ca: 1.1
     g_K: 2.0
   R2:
-    model: Morris-Lecar
     V_1: 30.0
     V_2: 15.0
     V_3: 0.0
@@ -28,7 +26,6 @@ neurons:
     g_Ca: 1.1
     g_K: 2.0
   R3:
-    model: Morris-Lecar
     V_1: 30.0
     V_2: 15.0
     V_3: 0.0
@@ -42,7 +39,6 @@ neurons:
     g_Ca: 1.1
     g_K: 2.0
   R4:
-    model: Morris-Lecar
     V_1: 30.0
     V_2: 15.0
     V_3: 0.0
@@ -56,7 +52,6 @@ neurons:
     g_Ca: 1.1
     g_K: 2.0
   R5:
-    model: Morris-Lecar
     V_1: 30.0
     V_2: 15.0
     V_3: 0.0
@@ -70,7 +65,6 @@ neurons:
     g_Ca: 1.1
     g_K: 2.0
   R6:
-    model: Morris-Lecar
     V_1: 30.0
     V_2: 15.0
     V_3: 0.0
@@ -84,7 +78,6 @@ neurons:
     g_Ca: 1.1
     g_K: 2.0
   L1:
-    model: Morris-Lecar
     V_1: 30.0
     V_2: 15.0
     V_3: 0.0
@@ -98,7 +91,6 @@ neurons:
     g_Ca: 1.1
     g_K: 2.0
   L2:
-    model: Morris-Lecar
     V_1: 30.0
     V_2: 15.0
     V_3: 0.0
@@ -115,7 +107,7 @@ neurons:
 synapses:
   R1-L1:
     presynaptic: R1
-    postsynapticL: L1
+    postsynaptic: L1
     reverse: -80.0
     delay: 1
     threshold: -70.0
@@ -125,7 +117,7 @@ synapses:
     scale: 1
   R2-L1:
     presynaptic: R2
-    postsynapticL: L1
+    postsynaptic: L1
     reverse: -80.0
     delay: 1
     threshold: -70.0
@@ -134,8 +126,8 @@ synapses:
     saturation: 0.01
     scale: 1
   R3-L1:
-    presynaptic: R3,
-    postsynapticL: L1,
+    presynaptic: R3
+    postsynaptic: L1
     reverse: -80.0
     delay: 1
     threshold: -70.0
@@ -144,8 +136,8 @@ synapses:
     saturation: 0.01
     scale: 1
   R4-L1:
-    presynaptic: R4,
-    postsynapticL: L1,
+    presynaptic: R4
+    postsynaptic: L1
     reverse: -80.0
     delay: 1
     threshold: -70.0
@@ -154,8 +146,8 @@ synapses:
     saturation: 0.01
     scale: 1
   R5-L1:
-    presynaptic: R5,
-    postsynapticL: L1,
+    presynaptic: R5
+    postsynaptic: L1
     reverse: -80.0
     delay: 1
     threshold: -70.0
@@ -164,8 +156,8 @@ synapses:
     saturation: 0.01
     scale: 1
   R6-L1:
-    presynaptic: R6,
-    postsynapticL: L1,
+    presynaptic: R6
+    postsynaptic: L1
     reverse: -80.0
     delay: 1
     threshold: -70.0
@@ -175,8 +167,8 @@ synapses:
     scale: 1
 
   R1-L2:
-    presynaptic: R1,
-    postsynapticL: L2,
+    presynaptic: R1
+    postsynaptic: L2
     reverse: -80.0
     delay: 1
     threshold: -70.0
@@ -185,8 +177,8 @@ synapses:
     saturation: 0.01
     scale: 1
   R2-L2:
-    presynaptic: R2,
-    postsynapticL: L2,
+    presynaptic: R2
+    postsynaptic: L2
     reverse: -80.0
     delay: 1
     threshold: -70.0
@@ -195,8 +187,8 @@ synapses:
     saturation: 0.01
     scale: 1
   R3-L2:
-    presynaptic: R3,
-    postsynapticL: L2,
+    presynaptic: R3
+    postsynaptic: L2
     reverse: -80.0
     delay: 1
     threshold: -70.0
@@ -205,8 +197,8 @@ synapses:
     saturation: 0.01
     scale: 1
   R4-L2:
-    presynaptic: R4,
-    postsynapticL: L2,
+    presynaptic: R4
+    postsynaptic: L2
     reverse: -80.0
     delay: 1
     threshold: -70.0
@@ -215,8 +207,8 @@ synapses:
     saturation: 0.01
     scale: 1
   R5-L2:
-    presynaptic: R5,
-    postsynapticL: L2,
+    presynaptic: R5
+    postsynaptic: L2
     reverse: -80.0
     delay: 1
     threshold: -70.0
@@ -225,8 +217,8 @@ synapses:
     saturation: 0.01
     scale: 1
   R6-L2:
-    presynaptic: R6,
-    postsynapticL: L2,
+    presynaptic: R6
+    postsynaptic: L2
     reverse: -80.0
     delay: 1
     threshold: -70.0

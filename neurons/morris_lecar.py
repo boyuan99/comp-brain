@@ -5,24 +5,18 @@ from core import BaseComponent
 
 class MorrisLecarNeuron(BaseComponent):
     """Morris Lecar Neuron Model"""
-    # Default State Variables of the Morris-Lecar Model
-    Default_States = OrderedDict(
-        V=-52.5, N=0.02
-    )
-    # Default Parameters of the Morris-Lecar Model
-    Default_Params = OrderedDict(
-        V_1=30.0, V_2=15.0, V_3=0.0, V_4=30.0,
-        phi=0.025, C=6.698, dt=1e-4,
-        E_L=-50.0, E_Ca=100.0, E_K=-70.0,
-        g_L=0.5, g_Ca=1.1, g_K=2.0,
-    )
 
     def __init__(self, name, **kwargs):
         super(MorrisLecarNeuron, self).__init__(name, **kwargs)
-        self.params = OrderedDict(self.Default_Params.copy())
-        self.states = OrderedDict(self.Default_States.copy())
-        self.value = [self.Default_States['V'], self.Default_States['N']]
-        self.value_array = np.append(self.value_array, self.value)
+        self.params: OrderedDict = OrderedDict(
+            V_1=30.0, V_2=15.0, V_3=0.0, V_4=30.0,
+            phi=0.025, C=6.698, dt=1e-4,
+            E_L=-50.0, E_Ca=100.0, E_K=-70.0,
+            g_L=0.5, g_Ca=1.1, g_K=2.0,
+        )
+        self.states: OrderedDict = OrderedDict(
+            V=[-52.5], N=[0.02]
+        )
 
         if 'params' in kwargs.keys():
             for key, val in kwargs['params'].items():

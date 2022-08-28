@@ -1,21 +1,22 @@
 import abc
 import numpy as np
 from collections import OrderedDict
-from core import default_circuit
 
 
 class BaseComponent:
-    Default_Params: OrderedDict = OrderedDict()
-    """A dictionary of (name, value) pair for parameters"""
-
-    Default_States: OrderedDict = OrderedDict()
-    """A dictionary of state variables"""
 
     def __init__(self, name, **kargs):
         self.kargs = kargs
         self.name = name
+        self.parents = []
+        self.children = []
         self.value = None
-        self.value_array = np.array([])
+
+    def append_children(self, child):
+        self.children.append(child)
+
+    def append_parents(self, parent):
+        self.parents.append(parent)
 
 
     @abc.abstractmethod
