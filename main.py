@@ -1,4 +1,5 @@
 import yaml
+import numpy as np
 from core import Circuit
 from neurons import MorrisLecarNeuron
 from synapses import BaseSynapse
@@ -17,4 +18,5 @@ for synapse in list(config['synapses']):
                                 config['synapses'][synapse]['postsynaptic'], params=config['synapses'][synapse]))
 
 circuit = Circuit(neurons, synapses)
-circuit.execute_step()
+t = np.arange(0, 1, 1e-4)
+circuit.execute_circuit(t)

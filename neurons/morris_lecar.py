@@ -28,11 +28,18 @@ class MorrisLecarNeuron(BaseComponent):
                 else:
                     raise ValueError(f"Unrecognized argument {key}")
 
-    def compute(self, I_syn):
-        V = self.value[0]
-        N = self.value[1]
+    def get_I_syn(self):
+        I_syn = 0
+        for i in range(len(self.parents)):
+            I_syn += self.parents[i].states['I_syn'][-1]
 
-        dt = self.params['dt'] * 1e3
+        return I_syn
+
+    def compute(self, I_syn, dt):
+        V = self.states['V'][-1]
+        N = self.states['N'][-1]
+
+        dt = dt*1e3
         V_1 = self.params['V_1']
         V_2 = self.params['V_2']
         V_3 = self.params['V_3']
@@ -54,6 +61,6 @@ class MorrisLecarNeuron(BaseComponent):
         V1 = V + dV * dt
         N1 = N + dN * dt
 
-        self.value = [V1, N1]
-        self.value_array = self.value_array.append(self.value)
+        self.states['V'].append(V1)
+        self.states['N'].append(N1)
         return [V1, N1]
