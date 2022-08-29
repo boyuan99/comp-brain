@@ -1,229 +1,268 @@
 neurons:
-  R1:
-    V_1: 30.0
-    V_2: 15.0
-    V_3: 0.0
-    V_4: 30.0
-    phi: 0.025
-    C: 6.698
-    E_L: -50.0
-    E_Ca: 100.0
-    E_K: -70.0
-    g_L: 0.5
-    g_Ca: 1.1
-    g_K: 2.0
-  R2:
-    V_1: 30.0
-    V_2: 15.0
-    V_3: 0.0
-    V_4: 30.0
-    phi: 0.025
-    C: 6.698
-    E_L: -50.0
-    E_Ca: 100.0
-    E_K: -70.0
-    g_L: 0.5
-    g_Ca: 1.1
-    g_K: 2.0
-  R3:
-    V_1: 30.0
-    V_2: 15.0
-    V_3: 0.0
-    V_4: 30.0
-    phi: 0.025
-    C: 6.698
-    E_L: -50.0
-    E_Ca: 100.0
-    E_K: -70.0
-    g_L: 0.5
-    g_Ca: 1.1
-    g_K: 2.0
-  R4:
-    V_1: 30.0
-    V_2: 15.0
-    V_3: 0.0
-    V_4: 30.0
-    phi: 0.025
-    C: 6.698
-    E_L: -50.0
-    E_Ca: 100.0
-    E_K: -70.0
-    g_L: 0.5
-    g_Ca: 1.1
-    g_K: 2.0
-  R5:
-    V_1: 30.0
-    V_2: 15.0
-    V_3: 0.0
-    V_4: 30.0
-    phi: 0.025
-    C: 6.698
-    E_L: -50.0
-    E_Ca: 100.0
-    E_K: -70.0
-    g_L: 0.5
-    g_Ca: 1.1
-    g_K: 2.0
-  R6:
-    V_1: 30.0
-    V_2: 15.0
-    V_3: 0.0
-    V_4: 30.0
-    phi: 0.025
-    C: 6.698
-    E_L: -50.0
-    E_Ca: 100.0
-    E_K: -70.0
-    g_L: 0.5
-    g_Ca: 1.1
-    g_K: 2.0
-  L1:
-    V_1: 30.0
-    V_2: 15.0
-    V_3: 0.0
-    V_4: 30.0
-    phi: 0.025
-    C: 6.698
-    E_L: -50.0
-    E_Ca: 100.0
-    E_K: -70.0
-    g_L: 0.5
-    g_Ca: 1.1
-    g_K: 2.0
-  L2:
-    V_1: 30.0
-    V_2: 15.0
-    V_3: 0.0
-    V_4: 30.0
-    phi: 0.025
-    C: 6.698
-    E_L: -50.0
-    E_Ca: 100.0
-    E_K: -70.0
-    g_L: 0.5
-    g_Ca: 1.1
-    g_K: 2.0
+  MorrisLecar:
+    R1:
+      V_1: 30.0
+      V_2: 15.0
+      V_3: 0.0
+      V_4: 30.0
+      phi: 0.025
+      offset: 150
+      C: 6.698
+      E_L: -50.0
+      E_Ca: 100.0
+      E_K: -70.0
+      g_L: 0.5
+      g_Ca: 1.1
+      g_K: 2.0
+    R2:
+      V_1: 30.0
+      V_2: 15.0
+      V_3: 0.0
+      V_4: 30.0
+      phi: 0.025
+      offset: 150
+      C: 6.698
+      E_L: -50.0
+      E_Ca: 100.0
+      E_K: -70.0
+      g_L: 0.5
+      g_Ca: 1.1
+      g_K: 2.0
+    R3:
+      V_1: 30.0
+      V_2: 15.0
+      V_3: 0.0
+      V_4: 30.0
+      phi: 0.025
+      offset: 150
+      C: 6.698
+      E_L: -50.0
+      E_Ca: 100.0
+      E_K: -70.0
+      g_L: 0.5
+      g_Ca: 1.1
+      g_K: 2.0
+    R4:
+      V_1: 30.0
+      V_2: 15.0
+      V_3: 0.0
+      V_4: 30.0
+      phi: 0.025
+      offset: 150
+      C: 6.698
+      E_L: -50.0
+      E_Ca: 100.0
+      E_K: -70.0
+      g_L: 0.5
+      g_Ca: 1.1
+      g_K: 2.0
+    R5:
+      V_1: 30.0
+      V_2: 15.0
+      V_3: 0.0
+      V_4: 30.0
+      phi: 0.025
+      offset: 150
+      C: 6.698
+      E_L: -50.0
+      E_Ca: 100.0
+      E_K: -70.0
+      g_L: 0.5
+      g_Ca: 1.1
+      g_K: 2.0
+    R6:
+      V_1: 30.0
+      V_2: 15.0
+      V_3: 0.0
+      V_4: 30.0
+      phi: 0.025
+      offset: 150
+      C: 6.698
+      E_L: -50.0
+      E_Ca: 100.0
+      E_K: -70.0
+      g_L: 0.5
+      g_Ca: 1.1
+      g_K: 2.0
+    L1:
+      V_1: -15.0
+      V_2: 2.0
+      V_3: -45.0
+      V_4: 10
+      phi: 0.0005
+      offset: 150
+      C: 6
+      E_L: -50.0
+      E_Ca: 120.0
+      E_K: -75.0
+      g_L: 0.1
+      g_Ca: 2.0
+      g_K: 2.0
+    L2:
+      V_1: -15.0
+      V_2: 2.0
+      V_3: -45.0
+      V_4: 10
+      phi: 0.0005
+      offset: 150
+      C: 6
+      E_L: -50.0
+      E_Ca: 120.0
+      E_K: -75.0
+      g_L: 0.1
+      g_Ca: 2.0
+      g_K: 2.0
 
 synapses:
-  R1-L1:
-    presynaptic: R1
-    postsynaptic: L1
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
-  R2-L1:
-    presynaptic: R2
-    postsynaptic: L1
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
-  R3-L1:
-    presynaptic: R3
-    postsynaptic: L1
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
-  R4-L1:
-    presynaptic: R4
-    postsynaptic: L1
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
-  R5-L1:
-    presynaptic: R5
-    postsynaptic: L1
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
-  R6-L1:
-    presynaptic: R6
-    postsynaptic: L1
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
+  InjectCurrent:
+    ext-R1:
+      presynaptic: None
+      postsynaptic: R1
+      type: step
+    ext-R2:
+      presynaptic: None
+      postsynaptic: R2
+      type: step
+    ext-R3:
+      presynaptic: None
+      postsynaptic: R3
+      type: step
+    ext-R4:
+      presynaptic: None
+      postsynaptic: R4
+      type: step
+    ext-R5:
+      presynaptic: None
+      postsynaptic: R5
+      type: step
+    ext-R6:
+      presynaptic: None
+      postsynaptic: R5
+      type: step
 
-  R1-L2:
-    presynaptic: R1
-    postsynaptic: L2
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
-  R2-L2:
-    presynaptic: R2
-    postsynaptic: L2
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
-  R3-L2:
-    presynaptic: R3
-    postsynaptic: L2
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
-  R4-L2:
-    presynaptic: R4
-    postsynaptic: L2
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
-  R5-L2:
-    presynaptic: R5
-    postsynaptic: L2
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
-  R6-L2:
-    presynaptic: R6
-    postsynaptic: L2
-    reverse: -80.0
-    delay: 1
-    threshold: -70.0
-    slope: 0.0002
-    power: 1.0
-    saturation: 0.01
-    scale: 1
+  CustomSynapse:
+    R1-L1:
+      presynaptic: R1
+      postsynaptic: L1
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
+    R2-L1:
+      presynaptic: R2
+      postsynaptic: L1
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
+    R3-L1:
+      presynaptic: R3
+      postsynaptic: L1
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
+    R4-L1:
+      presynaptic: R4
+      postsynaptic: L1
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
+    R5-L1:
+      presynaptic: R5
+      postsynaptic: L1
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
+    R6-L1:
+      presynaptic: R6
+      postsynaptic: L1
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
 
+    R1-L2:
+      presynaptic: R1
+      postsynaptic: L2
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
+    R2-L2:
+      presynaptic: R2
+      postsynaptic: L2
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
+    R3-L2:
+      presynaptic: R3
+      postsynaptic: L2
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
+    R4-L2:
+      presynaptic: R4
+      postsynaptic: L2
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
+    R5-L2:
+      presynaptic: R5
+      postsynaptic: L2
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
+    R6-L2:
+      presynaptic: R6
+      postsynaptic: L2
+      reverse: -80.0
+      delay: 1
+      threshold: -70.0
+      slope: 0.0002
+      power: 1.0
+      saturation: 0.01
+      scale: 1
+
+times:
+  dt: 0.0001
+  steps: 10000

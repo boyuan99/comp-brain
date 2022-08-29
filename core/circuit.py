@@ -1,8 +1,17 @@
-import numpy as np
-import yaml
 
 
 class Circuit:
+    """
+    Neuron circuit base class
+
+    execute step by step
+    execute the whole circuit: update synapses first, then update neurons
+
+    params:
+        neurons: list of instantiated neurons
+        synapses: list of instantiated synapses
+
+    """
     def __init__(self, neurons, synapses, **kargs):
         self.neurons = neurons
         self.synapses = synapses
@@ -11,17 +20,21 @@ class Circuit:
             pre_synaptic_neurons = self.find_neuron(synapse.presynaptic)
             post_synaptic_neurons = self.find_neuron(synapse.postsynaptic)
 
-            pre_synaptic_neurons.append_children(synapse)
-            post_synaptic_neurons.append_parents(synapse)
-            synapse.append_children(post_synaptic_neurons)
-            synapse.append_parents(pre_synaptic_neurons)
+            if pre_synaptic_neurons:
+                pre_synaptic_neurons.append_children(synapse)
+                synapse.append_parents(pre_synaptic_neurons)
+
+            if post_synaptic_neurons:
+                post_synaptic_neurons.append_parents(synapse)
+                synapse.append_children(post_synaptic_neurons)
 
     def find_neuron(self, name):
-        for i in range(len(self.neurons)):
-            if self.neurons[i].name == name:
-                return self.neurons[i]
+        if name != "None":
+            for i in range(len(self.neurons)):
+                if self.neurons[i].name == name:
+                    return self.neurons[i]
 
-        raise ValueError("Couldn't find neuron")
+            raise ValueError("Couldn't find neuron")
         return None
 
     def execute_step(self, dt=1e-4, synapses_policy=True, neurons_policy=True):

@@ -10,7 +10,7 @@ class MorrisLecarNeuron(BaseComponent):
         super(MorrisLecarNeuron, self).__init__(name, **kwargs)
         self.params: OrderedDict = OrderedDict(
             V_1=30.0, V_2=15.0, V_3=0.0, V_4=30.0,
-            phi=0.025, C=6.698, dt=1e-4,
+            phi=0.025, C=6.698, dt=1e-4, offset=150,
             E_L=-50.0, E_Ca=100.0, E_K=-70.0,
             g_L=0.5, g_Ca=1.1, g_K=2.0,
         )
@@ -45,6 +45,7 @@ class MorrisLecarNeuron(BaseComponent):
         V_3 = self.params['V_3']
         V_4 = self.params['V_4']
         phi = self.params['phi']
+        offset = self.params['offset']
         E_L = self.params['E_L']
         E_Ca = self.params['E_Ca']
         E_K = self.params['E_K']
@@ -54,7 +55,7 @@ class MorrisLecarNeuron(BaseComponent):
         g_K = self.params['g_K']
         C = self.params['C']
 
-        dV = (I_syn - g_L * (V - E_L) - 0.5 * g_Ca * (1 + np.tanh((V - V_1) / V_2)) * (V - E_Ca) - g_K * N * (
+        dV = (offset - I_syn - g_L * (V - E_L) - 0.5 * g_Ca * (1 + np.tanh((V - V_1) / V_2)) * (V - E_Ca) - g_K * N * (
                     V - E_K)) / C
         dN = (0.5 * (1 + np.tanh((V - V_3) / V_4)) - N) * (phi * np.cosh((V - V_3) / (2 * V_4)))
 

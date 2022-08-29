@@ -3,10 +3,10 @@ import numpy as np
 from collections import OrderedDict
 
 
-class BaseSynapse(BaseComponent):
+class CustomSynapse(BaseComponent):
 
     def __init__(self, name, presynaptic, postsynaptic, **kwargs):
-        super(BaseSynapse, self).__init__(name, **kwargs)
+        super(CustomSynapse, self).__init__(name, **kwargs)
 
         self.params: OrderedDict = OrderedDict(g_sat=0.15, k=0.05, n=1, t_delay=1, V_th=-50.5, V_rev=-50)
         self.states: OrderedDict = OrderedDict(I_syn=[])
@@ -35,7 +35,7 @@ class BaseSynapse(BaseComponent):
         V_th = self.params['V_th']
         V_rev = self.params['V_rev']
         g = np.minimum(g_sat, k * np.maximum((V_pre * t_delay - V_th) ** n, 0))
-        I_syn = -g * (V_post - V_rev)
+        I_syn = g * (V_post - V_rev)
 
         self.states['I_syn'].append(I_syn)
 

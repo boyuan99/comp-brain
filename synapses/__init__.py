@@ -1,1 +1,2 @@
-from .base_synapse import BaseSynapse
+from .custom_synapse import CustomSynapse
+from .inject_current import InjectCurrent
