@@ -31,11 +31,28 @@ class MorrisLecarNeuron(BaseComponent):
     def get_I_syn(self):
         I_syn = 0
         for i in range(len(self.parents)):
-            I_syn += self.parents[i].states['I_syn'][-1]
+            if len(self.parents[i].states['I_syn']) > 0:
+                I_syn += self.parents[i].states['I_syn'][-1]
 
         return I_syn
 
-    def compute(self, I_syn, dt):
+    def get_I_ext(self):
+        I_ext = 0
+        for i in range(len(self.parents)):
+            if len(self.parents[i].states['I_ext']) > 0:
+                I_ext += self.parents[i].states['I_ext'][-1]
+
+        return I_ext
+
+    def compute(self, I_syn: float, I_ext: float, dt:float):
+        """
+        Morris-Lecar gradient function
+
+        :param I_syn: the input synapse current
+        :param I_ext: the external injection current
+        :param dt: time step
+        :return: the updated states
+        """
         V = self.states['V'][-1]
         N = self.states['N'][-1]
 
@@ -55,7 +72,7 @@ class MorrisLecarNeuron(BaseComponent):
         g_K = self.params['g_K']
         C = self.params['C']
 
-        dV = (offset - I_syn - g_L * (V - E_L) - 0.5 * g_Ca * (1 + np.tanh((V - V_1) / V_2)) * (V - E_Ca) - g_K * N * (
+        dV = (I_ext + offset - I_syn - g_L * (V - E_L) - 0.5 * g_Ca * (1 + np.tanh((V - V_1) / V_2)) * (V - E_Ca) - g_K * N * (
                     V - E_K)) / C
         dN = (0.5 * (1 + np.tanh((V - V_3) / V_4)) - N) * (phi * np.cosh((V - V_3) / (2 * V_4)))
 
@@ -64,4 +81,4 @@ class MorrisLecarNeuron(BaseComponent):
 
         self.states['V'].append(V1)
         self.states['N'].append(N1)
-        return [V1, N1]
+        return self.states

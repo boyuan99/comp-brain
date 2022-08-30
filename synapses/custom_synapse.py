@@ -4,16 +4,31 @@ from collections import OrderedDict
 
 
 class CustomSynapse(BaseComponent):
+    """
+    A implementation of customized synapse model from "http://neurokernel.github.io/rfc/nk-rfc2.pdf"
 
-    def __init__(self, name, presynaptic, postsynaptic, **kwargs):
+    :argument
+        name: the name of the synapse, notice that in a circuit all of the
+            synapse's names should bedifferent
+        presynaptic: the name of the presynaptic neuron, doesn't need to be instantiated
+        postsynaptic: the name of the postsynaptic neuron, doesn't need to be instantiated
+        kwargs: keyword arguments that overwrite initial conditions of state
+            variables and values of parameters
+    """
+
+    def __init__(self, name: str, presynaptic: str, postsynaptic: str, **kwargs):
         super(CustomSynapse, self).__init__(name, **kwargs)
 
         self.params: OrderedDict = OrderedDict(g_sat=0.15, k=0.05, n=1, t_delay=1, V_th=-50.5, V_rev=-50)
-        self.states: OrderedDict = OrderedDict(I_syn=[])
+        self.states: OrderedDict = OrderedDict(I_ext=[], I_syn=[])
         self.presynaptic = presynaptic
         self.postsynaptic = postsynaptic
 
     def get_V_pre(self):
+        """
+        get the presynaptic voltage
+        :return:
+        """
         V_pre = 0
         for i in range(len(self.parents)):
             V_pre += self.parents[i].states['V'][-1]
@@ -39,5 +54,5 @@ class CustomSynapse(BaseComponent):
 
         self.states['I_syn'].append(I_syn)
 
-        return I_syn
+        return self.states
 

@@ -5,6 +5,11 @@ from synapses import CustomSynapse, InjectCurrent
 
 
 def read_cfg(cfg):
+    """
+
+    :param cfg: the configuration file
+    :return: [neurons, synapses, t]
+    """
     with open(cfg, 'r') as config_file:
         config = yaml.safe_load(config_file)
         config_file.close()
@@ -34,10 +39,10 @@ def read_cfg(cfg):
 def read_neurons(neurons_cfg):
     """
     read the neurons part from the config file, instantiate each neuron and store them in a list
-    params:
+    :param:
         neurons_cfg: config['neurons']
 
-    return:
+    :return:
         list of instantiated neurons
     """
     neurons = []
@@ -53,7 +58,15 @@ def read_neurons(neurons_cfg):
     return neurons
 
 
-def read_synapses(synapses_cfg, t):
+def read_synapses(synapses_cfg, t: np.ndarray):
+    """
+    read the synapses part from the configuration file, instantiate each
+    synapse and store them in a list
+
+    :param synapses_cfg: the synapse config part
+    :param t: a time numpy array for creating the external current
+    :return: list of instantiated synapses
+    """
     synapses = []
     models = list(synapses_cfg)
     for model in models:

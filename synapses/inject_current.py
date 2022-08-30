@@ -4,6 +4,9 @@ from collections import OrderedDict
 
 
 class InjectCurrent(BaseComponent):
+    """
+    
+    """
 
     def __init__(self, name, t, presynaptic, postsynaptic, **kwargs):
         super(InjectCurrent, self).__init__(name, **kwargs)
@@ -26,7 +29,7 @@ class InjectCurrent(BaseComponent):
             self.current[int(0.2 * len(t)):int(0.7 * len(t))] = 5
 
         self.count = 0
-        self.states: OrderedDict = OrderedDict(I_syn=[])
+        self.states: OrderedDict = OrderedDict(I_ext=[], I_syn=[])
         self.presynaptic = presynaptic
         self.postsynaptic = postsynaptic
 
@@ -38,6 +41,6 @@ class InjectCurrent(BaseComponent):
 
     def compute(self, V_pre, V_post):
         I_ext = self.current[self.count]
-        self.states['I_syn'].append(self.current[self.count])
+        self.states['I_ext'].append(self.current[self.count])
         self.count += 1
-        return I_ext
+        return self.states

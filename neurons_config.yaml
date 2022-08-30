@@ -6,7 +6,7 @@ neurons:
       V_3: 0.0
       V_4: 30.0
       phi: 0.025
-      offset: 150
+      offset: 0
       C: 6.698
       E_L: -50.0
       E_Ca: 100.0
@@ -20,7 +20,7 @@ neurons:
       V_3: 0.0
       V_4: 30.0
       phi: 0.025
-      offset: 150
+      offset: 0
       C: 6.698
       E_L: -50.0
       E_Ca: 100.0
@@ -34,7 +34,7 @@ neurons:
       V_3: 0.0
       V_4: 30.0
       phi: 0.025
-      offset: 150
+      offset: 0
       C: 6.698
       E_L: -50.0
       E_Ca: 100.0
@@ -48,7 +48,7 @@ neurons:
       V_3: 0.0
       V_4: 30.0
       phi: 0.025
-      offset: 150
+      offset: 0
       C: 6.698
       E_L: -50.0
       E_Ca: 100.0
@@ -62,7 +62,7 @@ neurons:
       V_3: 0.0
       V_4: 30.0
       phi: 0.025
-      offset: 150
+      offset: 0
       C: 6.698
       E_L: -50.0
       E_Ca: 100.0
@@ -76,7 +76,7 @@ neurons:
       V_3: 0.0
       V_4: 30.0
       phi: 0.025
-      offset: 150
+      offset: 0
       C: 6.698
       E_L: -50.0
       E_Ca: 100.0
@@ -90,8 +90,8 @@ neurons:
       V_3: -45.0
       V_4: 10
       phi: 0.0005
-      offset: 150
-      C: 6
+      offset: 0
+      C: 1
       E_L: -50.0
       E_Ca: 120.0
       E_K: -75.0
@@ -104,8 +104,8 @@ neurons:
       V_3: -45.0
       V_4: 10
       phi: 0.0005
-      offset: 150
-      C: 6
+      offset: 0
+      C: 1
       E_L: -50.0
       E_Ca: 120.0
       E_K: -75.0
@@ -137,7 +137,7 @@ synapses:
       type: step
     ext-R6:
       presynaptic: None
-      postsynaptic: R5
+      postsynaptic: R6
       type: step
 
   CustomSynapse:
