@@ -7,6 +7,13 @@ class MorrisLecarNeuron(BaseComponent):
     """Morris Lecar Neuron Model"""
 
     def __init__(self, name, **kwargs):
+        """
+
+        :param name: name for the morris lecar neuron, every neuron in the circuit
+            should be different
+        :param kwargs: keyword arguments that overwrite initial conditions of state
+            variables and values of parameters
+        """
         super(MorrisLecarNeuron, self).__init__(name, **kwargs)
         self.params: OrderedDict = OrderedDict(
             V_1=30.0, V_2=15.0, V_3=0.0, V_4=30.0,
@@ -28,7 +35,11 @@ class MorrisLecarNeuron(BaseComponent):
                 else:
                     raise ValueError(f"Unrecognized argument {key}")
 
-    def get_I_syn(self):
+    def get_I_syn(self) -> float:
+        """
+        get synapse current
+        :return: synapse current
+        """
         I_syn = 0
         for i in range(len(self.parents)):
             if len(self.parents[i].states['I_syn']) > 0:
@@ -36,7 +47,11 @@ class MorrisLecarNeuron(BaseComponent):
 
         return I_syn
 
-    def get_I_ext(self):
+    def get_I_ext(self) -> float:
+        """
+        get enternal injected current
+        :return: injected current
+        """
         I_ext = 0
         for i in range(len(self.parents)):
             if len(self.parents[i].states['I_ext']) > 0:
@@ -44,14 +59,14 @@ class MorrisLecarNeuron(BaseComponent):
 
         return I_ext
 
-    def compute(self, I_syn: float, I_ext: float, dt:float):
+    def compute(self, I_syn: float, I_ext: float, dt:float) -> dict:
         """
         Morris-Lecar gradient function
 
         :param I_syn: the input synapse current
         :param I_ext: the external injection current
         :param dt: time step
-        :return: the updated states
+        :return: dict(V, N)
         """
         V = self.states['V'][-1]
         N = self.states['N'][-1]

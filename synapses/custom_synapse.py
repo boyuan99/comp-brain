@@ -9,7 +9,7 @@ class CustomSynapse(BaseComponent):
 
     :argument
         name: the name of the synapse, notice that in a circuit all of the
-            synapse's names should bedifferent
+            synapse's names should be different
         presynaptic: the name of the presynaptic neuron, doesn't need to be instantiated
         postsynaptic: the name of the postsynaptic neuron, doesn't need to be instantiated
         kwargs: keyword arguments that overwrite initial conditions of state
@@ -24,7 +24,7 @@ class CustomSynapse(BaseComponent):
         self.presynaptic = presynaptic
         self.postsynaptic = postsynaptic
 
-    def get_V_pre(self):
+    def get_V_pre(self) -> float:
         """
         get the presynaptic voltage
         :return:
@@ -35,14 +35,21 @@ class CustomSynapse(BaseComponent):
 
         return V_pre
 
-    def get_V_post(self):
+    def get_V_post(self) -> float:
         V_post = 0
         for i in range(len(self.children)):
             V_post += self.children[i].states['V'][-1]
 
         return V_post
 
-    def compute(self, V_pre, V_post):
+    def compute(self, V_pre: float, V_post: float) -> dict:
+        """
+        custom synapse function
+
+        :param V_pre: presynaptic neuron voltage
+        :param V_post: post synaptic neuron voltage
+        :return: dict(V, N)
+        """
         g_sat = self.params['g_sat']
         k = self.params['k']
         n = self.params['n']
