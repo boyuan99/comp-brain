@@ -8,7 +8,7 @@ class MorrisLecarNeuron(BaseComponent):
 
     def __init__(self, name, **kwargs):
         """
-
+        initial function
         :param name: name for the morris lecar neuron, every neuron in the circuit
             should be different
         :param kwargs: keyword arguments that overwrite initial conditions of state
@@ -16,16 +16,16 @@ class MorrisLecarNeuron(BaseComponent):
         """
         super(MorrisLecarNeuron, self).__init__(name, **kwargs)
         self.params: OrderedDict = OrderedDict(
-            V_1=30.0, V_2=15.0, V_3=0.0, V_4=30.0,
-            phi=0.025, C=6.698, dt=1e-4, offset=150,
-            E_L=-50.0, E_Ca=100.0, E_K=-70.0,
-            g_L=0.5, g_Ca=1.1, g_K=2.0,
+            V_1=-15.0, V_2=2.0, V_3=-45.0, V_4=10.0,
+            phi=0.0005, C=1, dt=1e-4, offset=150,
+            E_L=-50.0, E_Ca=120.0, E_K=-75.0,
+            g_L=0.1, g_Ca=2.0, g_K=2.0,
         )
         self.states: OrderedDict = OrderedDict(
             V=[-52.5], N=[0.02]
         )
 
-        if 'params' in kwargs.keys():
+        if ('params' in kwargs.keys()) & (not kwargs['params'] is None):
             for key, val in kwargs['params'].items():
                 if key in self.params:
                     self.params[key] = val

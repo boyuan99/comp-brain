@@ -1,6 +1,6 @@
 import yaml
 import numpy as np
-from neurons import MorrisLecarNeuron
+from neurons import MorrisLecarNeuron, PhotoInsensitiveNeuron
 from synapses import CustomSynapse, InjectCurrent
 
 
@@ -52,6 +52,10 @@ def read_neurons(neurons_cfg):
             for neuron in list(neurons_cfg['MorrisLecar']):
                 neurons.append(MorrisLecarNeuron(neuron, params=neurons_cfg['MorrisLecar'][neuron]))
 
+        elif model == 'PhotoInsensitive':
+            for neuron in list(neurons_cfg['PhotoInsensitive']):
+                neurons.append(PhotoInsensitiveNeuron(neuron, params=neurons_cfg['PhotoInsensitive'][neuron]))
+
         else:
             raise ValueError("no {} neurons implemented".format(model))
 
@@ -74,7 +78,7 @@ def read_synapses(synapses_cfg, t: np.ndarray):
             for synapse in list(synapses_cfg['CustomSynapse']):
                 synapses.append(CustomSynapse(synapse, synapses_cfg['CustomSynapse'][synapse]['presynaptic'],
                                               synapses_cfg['CustomSynapse'][synapse]['postsynaptic'],
-                                              params=synapses_cfg['CustomSynapse'][synapse]))
+                                              params=synapses_cfg['CustomSynapse'][synapse]['params']))
 
         elif model == 'InjectCurrent':
             for synapse in list(synapses_cfg['InjectCurrent']):

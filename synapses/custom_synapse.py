@@ -5,10 +5,10 @@ from collections import OrderedDict
 
 class CustomSynapse(BaseComponent):
     """
-    A implementation of customized synapse model from "http://neurokernel.github.io/rfc/nk-rfc2.pdf"
+    An implementation of customized synapse model from "http://neurokernel.github.io/rfc/nk-rfc2.pdf"
 
     :argument
-        name: the name of the synapse, notice that in a circuit all of the
+        name: the name of the synapse, notice that in a circuit all the
             synapse's names should be different
         presynaptic: the name of the presynaptic neuron, doesn't need to be instantiated
         postsynaptic: the name of the postsynaptic neuron, doesn't need to be instantiated
@@ -19,10 +19,20 @@ class CustomSynapse(BaseComponent):
     def __init__(self, name: str, presynaptic: str, postsynaptic: str, **kwargs):
         super(CustomSynapse, self).__init__(name, **kwargs)
 
-        self.params: OrderedDict = OrderedDict(g_sat=0.15, k=0.05, n=1, t_delay=1, V_th=-50.5, V_rev=-50)
+        self.params: OrderedDict = OrderedDict(g_sat=0.15, k=0.05, n=1, t_delay=1, V_th=-50.5, V_rev=-0, scale=1,)
         self.states: OrderedDict = OrderedDict(I_ext=[], I_syn=[])
         self.presynaptic = presynaptic
         self.postsynaptic = postsynaptic
+
+        if ('params' in kwargs.keys()) & (not kwargs['params'] is None):
+            for key, val in kwargs['params'].items():
+                if key in self.params:
+                    self.params[key] = val
+                elif key in self.states:
+                    self.states[key] = val
+                    self.initial_states[key] = val
+                else:
+                    raise ValueError(f"Unrecognized argument {key}")
 
     def get_V_pre(self) -> float:
         """
@@ -56,8 +66,9 @@ class CustomSynapse(BaseComponent):
         t_delay = self.params['t_delay']
         V_th = self.params['V_th']
         V_rev = self.params['V_rev']
+        scale = self.params['scale']
         g = np.minimum(g_sat, k * np.maximum((V_pre * t_delay - V_th) ** n, 0))
-        I_syn = g * (V_post - V_rev)
+        I_syn = scale * g * (V_post - V_rev)
 
         self.states['I_syn'].append(I_syn)
 

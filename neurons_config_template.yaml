@@ -1,0 +1,197 @@
+neurons:
+  PhotoInsensitive:
+    R1:
+
+    R2:
+
+    R3:
+
+    R4:
+
+    R5:
+
+    R6:
+
+  MorrisLecar:
+    L1:
+      V_1: -15.0
+      V_2: 2.0
+      V_3: -45.0
+      V_4: 10
+      phi: 0.0005
+      offset: 0
+      C: 1
+      E_L: -50.0
+      E_Ca: 120.0
+      E_K: -75.0
+      g_L: 0.1
+      g_Ca: 2.0
+      g_K: 2.0
+    L2:
+      V_1: -15.0
+      V_2: 2.0
+      V_3: -45.0
+      V_4: 10
+      phi: 0.0005
+      offset: 0
+      C: 1
+      E_L: -50.0
+      E_Ca: 120.0
+      E_K: -75.0
+      g_L: 0.1
+      g_Ca: 2.0
+      g_K: 2.0
+
+synapses:
+  InjectCurrent:
+    ext-R1:
+      presynaptic: None
+      postsynaptic: R1
+      type: step
+    ext-R2:
+      presynaptic: None
+      postsynaptic: R2
+      type: step
+    ext-R3:
+      presynaptic: None
+      postsynaptic: R3
+      type: step
+    ext-R4:
+      presynaptic: None
+      postsynaptic: R4
+      type: step
+    ext-R5:
+      presynaptic: None
+      postsynaptic: R5
+      type: step
+    ext-R6:
+      presynaptic: None
+      postsynaptic: R6
+      type: step
+
+  CustomSynapse:
+    R1-L1:
+      presynaptic: R1
+      postsynaptic: L1
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+    R2-L1:
+      presynaptic: R2
+      postsynaptic: L1
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+    R3-L1:
+      presynaptic: R3
+      postsynaptic: L1
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+    R4-L1:
+      presynaptic: R4
+      postsynaptic: L1
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+    R5-L1:
+      presynaptic: R5
+      postsynaptic: L1
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+    R6-L1:
+      presynaptic: R6
+      postsynaptic: L1
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+
+    R1-L2:
+      presynaptic: R1
+      postsynaptic: L2
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+    R2-L2:
+      presynaptic: R2
+      postsynaptic: L2
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+    R3-L2:
+      presynaptic: R3
+      postsynaptic: L2
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+    R4-L2:
+      presynaptic: R4
+      postsynaptic: L2
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+    R5-L2:
+      presynaptic: R5
+      postsynaptic: L2
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+    R6-L2:
+      presynaptic: R6
+      postsynaptic: L2
+      params:
+        g_sat: 0.1
+        k: 0.2
+        n: 1
+        t_delay: 1
+        V_th: -70.0
+        V_rev: -0.0
+
+times:
+  dt: 0.0001
+  steps: 10000
