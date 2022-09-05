@@ -1,7 +1,8 @@
 import yaml
 import numpy as np
-from neurons import MorrisLecarNeuron, PhotoInsensitiveNeuron
+from neurons import MorrisLecarNeuron, PhotoInsensitiveNeuron, HodgkinHuxleyNeuron
 from synapses import CustomSynapse, InjectCurrent
+from core import CompBrainUtilsError
 
 
 def read_cfg(cfg):
@@ -26,12 +27,12 @@ def read_cfg(cfg):
     if 'neurons' in list(config):
         neurons = read_neurons(config['neurons'])
     else:
-        raise ValueError("no neuron defined in the config file")
+        raise CompBrainUtilsError("no neuron defined in the config file")
 
     if 'synapses' in list(config):
         synapses = read_synapses(config['synapses'], t)
     else:
-        raise ValueError("no synapse defined in the config file")
+        raise CompBrainUtilsError("no synapse defined in the config file")
 
     return [neurons, synapses, t]
 
@@ -56,8 +57,12 @@ def read_neurons(neurons_cfg):
             for neuron in list(neurons_cfg['PhotoInsensitive']):
                 neurons.append(PhotoInsensitiveNeuron(neuron, params=neurons_cfg['PhotoInsensitive'][neuron]))
 
+        elif model == 'HodgkinHuxley':
+            for neuron in list(neurons_cfg['HodgkinHuxley']):
+                neurons.append(HodgkinHuxleyNeuron(neuron, params=neurons_cfg['HodgkinHuxley'][neuron]))
+
         else:
-            raise ValueError("no {} neurons implemented".format(model))
+            raise CompBrainUtilsError("no {} neurons implemented".format(model))
 
     return neurons
 

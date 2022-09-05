@@ -1,6 +1,7 @@
 from core.node import BaseComponent
 import numpy as np
 from collections import OrderedDict
+from core import CompBrainModelError
 
 
 class CustomSynapse(BaseComponent):
@@ -32,7 +33,7 @@ class CustomSynapse(BaseComponent):
                     self.states[key] = val
                     self.initial_states[key] = val
                 else:
-                    raise ValueError(f"Unrecognized argument {key}")
+                    raise CompBrainModelError(f"Unrecognized argument {key}")
 
     def get_V_pre(self) -> float:
         """

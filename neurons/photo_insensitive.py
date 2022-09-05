@@ -1,6 +1,6 @@
 import numpy as np
 from collections import OrderedDict
-from core import BaseComponent
+from core import BaseComponent, CompBrainModelError
 
 
 class PhotoInsensitiveNeuron(BaseComponent):
@@ -40,7 +40,7 @@ class PhotoInsensitiveNeuron(BaseComponent):
                     self.states[key] = val
                     self.initial_states[key] = val
                 else:
-                    raise ValueError(f"Unrecognized argument {key}")
+                    raise CompBrainModelError(f"Unrecognized argument {key}")
 
     def get_I_syn(self) -> float:
         """

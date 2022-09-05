@@ -1,6 +1,7 @@
 from core.node import BaseComponent
 import numpy as np
 from collections import OrderedDict
+from core import CompBrainModelError
 
 
 class InjectCurrent(BaseComponent):
@@ -37,7 +38,7 @@ class InjectCurrent(BaseComponent):
                 self.current[int(0.2 * len(t)):int(0.7 * len(t))] = 5
 
             else:
-                raise ValueError("no {} inject type implemented".format(kwargs['type']))
+                raise CompBrainModelError("no {} inject type implemented".format(kwargs['type']))
 
         else:
             self.current = np.zeros_like(t)
