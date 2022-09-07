@@ -16,13 +16,13 @@ class MorrisLecarNeuron(BaseComponent):
         """
         super(MorrisLecarNeuron, self).__init__(name, **kwargs)
         self.params: OrderedDict = OrderedDict(
-            V_1=-15.0, V_2=2.0, V_3=-45.0, V_4=10.0,
-            phi=0.0005, C=1, dt=1e-4, offset=150,
+            V_1=-15.0, V_2=2.0, V_3=-45.0, V_4=0.8,
+            phi=0.0005, C=1, dt=1e-4, offset=70,
             E_L=-50.0, E_Ca=120.0, E_K=-75.0,
-            g_L=0.1, g_Ca=2.0, g_K=2.0,
+            g_L=0.1, g_Ca=2.0, g_K=7.0,
         )
         self.states: OrderedDict = OrderedDict(
-            V=[-52.5], N=[0.02]
+            V=[-52.5], N=[0.5]
         )
 
         if ('params' in kwargs.keys()) & (not kwargs['params'] is None):
