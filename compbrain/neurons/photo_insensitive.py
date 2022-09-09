@@ -1,6 +1,6 @@
 import numpy as np
 from collections import OrderedDict
-from core import BaseComponent, CompBrainModelError
+from compbrain.core import BaseComponent, CompBrainModelError
 
 
 class PhotoInsensitiveNeuron(BaseComponent):

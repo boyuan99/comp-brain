@@ -17,6 +17,25 @@ neurons:
 
     L2:
 
+    Mi1:
+      V_1: -15.0
+      V_2: 2.0
+      V_3: -45.0
+      V_4: 0.8
+      phi: 0.0005
+      offset: 0
+      C: 1
+      E_L: -50.0
+      E_Ca: 120.0
+      E_K: -75.0
+      g_L: 0.1
+      g_Ca: 2.0
+      g_K: 1.0
+      V: -55
+
+    Tm1:
+
+
 
 synapses:
   InjectCurrent:
@@ -105,6 +124,17 @@ synapses:
     R6-L2:
       presynaptic: R6
       postsynaptic: L2
+      params:
+
+    L1-Mi1:
+      presynaptic: L1
+      postsynaptic: Mi1
+      params:
+
+
+    L2-Tm1:
+      presynaptic: L2
+      postsynaptic: Tm1
       params:
 
 

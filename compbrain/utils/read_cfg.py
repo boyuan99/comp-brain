@@ -1,8 +1,8 @@
 import yaml
 import numpy as np
-from neurons import MorrisLecarNeuron, PhotoInsensitiveNeuron, HodgkinHuxleyNeuron
-from synapses import CustomSynapse, InjectCurrent
-from core import CompBrainUtilsError
+from compbrain.neurons import MorrisLecarNeuron, PhotoInsensitiveNeuron, HodgkinHuxleyNeuron
+from compbrain.synapses import CustomSynapse, InjectCurrent
+from compbrain.core import CompBrainUtilsError
 
 
 def read_cfg(cfg):

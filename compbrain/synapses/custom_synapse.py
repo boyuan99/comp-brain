@@ -1,7 +1,7 @@
-from core.node import BaseComponent
+from compbrain.core.node import BaseComponent
 import numpy as np
 from collections import OrderedDict
-from core import CompBrainModelError
+from compbrain.core import CompBrainModelError
 
 
 class CustomSynapse(BaseComponent):
@@ -20,7 +20,7 @@ class CustomSynapse(BaseComponent):
     def __init__(self, name: str, presynaptic: str, postsynaptic: str, **kwargs):
         super(CustomSynapse, self).__init__(name, **kwargs)
 
-        self.params: OrderedDict = OrderedDict(g_sat=0.05, k=0.05, n=1, t_delay=1, V_th=-50.5, V_rev=-80, scale=1, )
+        self.params: OrderedDict = OrderedDict(g_sat=0.05, k=0.05, n=1, t_delay=1, V_th=-50.5, V_rev=-70, scale=2, )
         self.states: OrderedDict = OrderedDict(I_ext=[], I_syn=[])
         self.presynaptic = presynaptic
         self.postsynaptic = postsynaptic

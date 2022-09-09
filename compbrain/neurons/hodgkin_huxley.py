@@ -1,10 +1,10 @@
 import numpy as np
 from collections import OrderedDict
-from core import BaseComponent, CompBrainModelError
+from compbrain.core import BaseComponent, CompBrainModelError
 
 
-class MorrisLecarNeuron(BaseComponent):
-    """Morris Lecar Neuron Model"""
+class HodgkinHuxleyNeuron(BaseComponent):
+    """Hodgkin Huxley Neuron Model"""
 
     def __init__(self, name, **kwargs):
         """
@@ -14,15 +14,14 @@ class MorrisLecarNeuron(BaseComponent):
         :param kwargs: keyword arguments that overwrite initial conditions of state
             variables and values of parameters
         """
-        super(MorrisLecarNeuron, self).__init__(name, **kwargs)
+        super(HodgkinHuxleyNeuron, self).__init__(name, **kwargs)
         self.params: OrderedDict = OrderedDict(
-            V_1=-15.0, V_2=2.0, V_3=-45.0, V_4=0.8,
-            phi=0.0005, C=1, dt=1e-4, offset=70,
-            E_L=-50.0, E_Ca=120.0, E_K=-75.0,
-            g_L=0.1, g_Ca=2.0, g_K=7.0,
+            g_Na=120.0, g_K=36.0, g_L=0.3,
+            E_Na=50.0, E_K=-77.0, E_L=-54.387,
+            offset=0, C=1,
         )
         self.states: OrderedDict = OrderedDict(
-            V=[-52.5], N=[0.5]
+            V=[-60], n=[0.0], m=[0.0], h=[1.0]
         )
 
         if ('params' in kwargs.keys()) & (not kwargs['params'] is None):
@@ -30,8 +29,7 @@ class MorrisLecarNeuron(BaseComponent):
                 if key in self.params:
                     self.params[key] = val
                 elif key in self.states:
-                    self.states[key] = val
-                    self.initial_states[key] = val
+                    self.states[key] = [val]
                 else:
                     raise CompBrainModelError(f"Unrecognized argument {key}")
 
@@ -61,39 +59,42 @@ class MorrisLecarNeuron(BaseComponent):
 
     def compute(self, I_syn: float, I_ext: float, dt:float) -> dict:
         """
-        Hodgkin-Huxley gradient function
+        Morris-Lecar gradient function
 
         :param I_syn: the input synapse current
         :param I_ext: the external injection current
         :param dt: time step
-        :return: dict(V, N)
+        :return: dict(V, m, n, h)
         """
         V = self.states['V'][-1]
-        N = self.states['N'][-1]
+        m = self.states['m'][-1]
+        n = self.states['n'][-1]
+        h = self.states['h'][-1]
 
         dt = dt*1e3
-        V_1 = self.params['V_1']
-        V_2 = self.params['V_2']
-        V_3 = self.params['V_3']
-        V_4 = self.params['V_4']
-        phi = self.params['phi']
         offset = self.params['offset']
         E_L = self.params['E_L']
-        E_Ca = self.params['E_Ca']
+        E_Na = self.params['E_Na']
         E_K = self.params['E_K']
-
         g_L = self.params['g_L']
-        g_Ca = self.params['g_Ca']
+        g_Na = self.params['g_Na']
         g_K = self.params['g_K']
         C = self.params['C']
 
-        dV = (I_ext + offset - I_syn - g_L * (V - E_L) - 0.5 * g_Ca * (1 + np.tanh((V - V_1) / V_2)) * (V - E_Ca) - g_K * N * (
-                    V - E_K)) / C
-        dN = (0.5 * (1 + np.tanh((V - V_3) / V_4)) - N) * (phi * np.cosh((V - V_3) / (2 * V_4)))
+        dV = (offset + I_ext - I_syn - g_K*n**4*(V-E_K) - g_Na*m**3*h*(V-E_Na) -
+              g_L*(V-E_L))/C
+
+        dn = (0.01*(10-V)/(np.exp(1-V/10)-1))*(1-n) - 0.125*np.exp(-V/80)*n
+        dm = ((2.5-0.1*V)/(np.exp(2.5-V/10)-1))*(1-m) - 4*np.exp(-V/18)*m
+        dh = 0.07*np.exp(-V/20)*(1-h) - h/(1+np.exp(3-V/10))
 
         V1 = V + dV * dt
-        N1 = N + dN * dt
+        n1 = n + dn * dt
+        m1 = m + dm * dt
+        h1 = h + dh * dt
 
         self.states['V'].append(V1)
-        self.states['N'].append(N1)
+        self.states['n'].append(n1)
+        self.states['m'].append(m1)
+        self.states['h'].append(h1)
         return self.states

@@ -1,4 +1,5 @@
 import numpy as np
+from tqdm import tqdm
 
 class Circuit:
     """
@@ -70,7 +71,7 @@ class Circuit:
         """
         dt = t[1] - t[0]
 
-        for i in range(len(t)):
+        for i in tqdm(range(len(t))):
             if i < len(t)-1:
                 self.execute_step(dt)
             else:

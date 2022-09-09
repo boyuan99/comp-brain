@@ -1,7 +1,7 @@
-from core.node import BaseComponent
+from compbrain.core.node import BaseComponent
 import numpy as np
 from collections import OrderedDict
-from core import CompBrainModelError
+from compbrain.core import CompBrainModelError
 
 
 class InjectCurrent(BaseComponent):
@@ -35,7 +35,7 @@ class InjectCurrent(BaseComponent):
         if 'type' in kwargs.keys():
             if kwargs['type'] == 'step':
                 self.current = np.zeros_like(t)
-                self.current[int(0.2 * len(t)):int(0.7 * len(t))] = 5
+                self.current[int(0.2 * len(t)):int(0.7 * len(t))] = 8
 
             else:
                 raise CompBrainModelError("no {} inject type implemented".format(kwargs['type']))
