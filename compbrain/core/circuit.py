@@ -1,6 +1,7 @@
 import numpy as np
 from tqdm import tqdm
 
+
 class Circuit:
     """
     Neuron circuit base class

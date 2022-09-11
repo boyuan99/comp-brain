@@ -32,15 +32,15 @@ class PhotoInsensitiveNeuron(BaseComponent):
         'init_dra': 0.0117, 'init_dri': 0.9998, 'init_nov': 0.0017,
         """
 
-        if ('params' in kwargs.keys()) & (not kwargs['params'] is None):
-            for key, val in kwargs['params'].items():
-                if key in self.params:
-                    self.params[key] = val
-                elif key in self.states:
-                    self.states[key] = val
-                    self.initial_states[key] = val
-                else:
-                    raise CompBrainModelError(f"Unrecognized argument {key}")
+        if 'params' in kwargs.keys():
+            if not kwargs['params'] is None:
+                for key, val in kwargs['params'].items():
+                    if key in self.params:
+                        self.params[key] = val
+                    elif key in self.states:
+                        self.states[key] = [val]
+                    else:
+                        raise CompBrainModelError(f"Unrecognized argument {key}")
 
     def get_I_syn(self) -> float:
         """

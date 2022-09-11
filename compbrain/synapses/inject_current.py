@@ -24,7 +24,7 @@ class InjectCurrent(BaseComponent):
                 input current for the model
     """
 
-    def __init__(self, name, t, presynaptic, postsynaptic, **kwargs):
+    def __init__(self, name, presynaptic, postsynaptic, **kwargs):
         super(InjectCurrent, self).__init__(name, **kwargs)
 
         if 'current' in kwargs.keys():
@@ -32,17 +32,30 @@ class InjectCurrent(BaseComponent):
         else:
             self.current = []
 
+        if 't' in kwargs.keys():
+            self.t = kwargs['t']
+        else:
+            self.t = np.arange(0, 1, 1e-4)
+
         if 'type' in kwargs.keys():
             if kwargs['type'] == 'step':
-                self.current = np.zeros_like(t)
-                self.current[int(0.2 * len(t)):int(0.7 * len(t))] = 8
+                if 'intensity' in kwargs.keys():
+                    self.current = np.zeros_like(self.t)
+                    self.current[int(0.2 * len(self.t)):int(0.7 * len(self.t))] = kwargs['intensity']
+                else:
+                    self.current = np.zeros_like(self.t)
+                    self.current[int(0.2 * len(self.t)):int(0.7 * len(self.t))] = 5
 
             else:
                 raise CompBrainModelError("no {} inject type implemented".format(kwargs['type']))
 
         else:
-            self.current = np.zeros_like(t)
-            self.current[int(0.2 * len(t)):int(0.7 * len(t))] = 5
+            if 'intensity' in kwargs.keys():
+                self.current = np.zeros_like(self.t)
+                self.current[int(0.2 * len(self.t)):int(0.7 * len(self.t))] = kwargs['intensity']
+            else:
+                self.current = np.zeros_like(self.t)
+                self.current[int(0.2 * len(self.t)):int(0.7 * len(self.t))] = 5
 
         self.count = 0
         self.states: OrderedDict = OrderedDict(I_ext=[], I_syn=[])

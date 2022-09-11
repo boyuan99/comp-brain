@@ -25,14 +25,15 @@ class MorrisLecarNeuron(BaseComponent):
             V=[-44.5], N=[0.5]
         )
 
-        if ('params' in kwargs.keys()) & (not kwargs['params'] is None):
-            for key, val in kwargs['params'].items():
-                if key in self.params:
-                    self.params[key] = val
-                elif key in self.states:
-                    self.states[key] = [val]
-                else:
-                    raise CompBrainModelError(f"Unrecognized argument {key}")
+        if 'params' in kwargs.keys():
+            if not kwargs['params'] is None:
+                for key, val in kwargs['params'].items():
+                    if key in self.params:
+                        self.params[key] = val
+                    elif key in self.states:
+                        self.states[key] = [val]
+                    else:
+                        raise CompBrainModelError(f"Unrecognized argument {key}")
 
     def get_I_syn(self) -> float:
         """

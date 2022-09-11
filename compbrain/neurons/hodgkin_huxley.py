@@ -24,14 +24,15 @@ class HodgkinHuxleyNeuron(BaseComponent):
             V=[-60], n=[0.0], m=[0.0], h=[1.0]
         )
 
-        if ('params' in kwargs.keys()) & (not kwargs['params'] is None):
-            for key, val in kwargs['params'].items():
-                if key in self.params:
-                    self.params[key] = val
-                elif key in self.states:
-                    self.states[key] = [val]
-                else:
-                    raise CompBrainModelError(f"Unrecognized argument {key}")
+        if 'params' in kwargs.keys():
+            if not kwargs['params'] is None:
+                for key, val in kwargs['params'].items():
+                    if key in self.params:
+                        self.params[key] = val
+                    elif key in self.states:
+                        self.states[key] = [val]
+                    else:
+                        raise CompBrainModelError(f"Unrecognized argument {key}")
 
     def get_I_syn(self) -> float:
         """

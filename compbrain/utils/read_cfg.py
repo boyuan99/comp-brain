@@ -87,9 +87,10 @@ def read_synapses(synapses_cfg, t: np.ndarray):
 
         elif model == 'InjectCurrent':
             for synapse in list(synapses_cfg['InjectCurrent']):
-                synapses.append(InjectCurrent(synapse, t, synapses_cfg['InjectCurrent'][synapse]['presynaptic'],
+                synapses.append(InjectCurrent(synapse, synapses_cfg['InjectCurrent'][synapse]['presynaptic'],
                                               synapses_cfg['InjectCurrent'][synapse]['postsynaptic'],
-                                              type=synapses_cfg['InjectCurrent'][synapse]['type']))
+                                              type=synapses_cfg['InjectCurrent'][synapse]['type'],
+                                              t=t))
 
         else:
             raise ValueError("no {} synapses implemented".format(model))
