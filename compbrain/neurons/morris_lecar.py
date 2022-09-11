@@ -59,6 +59,16 @@ class MorrisLecarNeuron(BaseComponent):
 
         return I_ext
 
+    def reset_value(self):
+        """
+        reset the morris lecar neuron to its initial values
+        """
+        V_init = self.states['V'][0]
+        N_init = self.states['N'][0]
+        self.states = OrderedDict(
+            V=[V_init], N=[N_init]
+        )
+
     def compute(self, I_syn: float, I_ext: float, dt:float) -> dict:
         """
         Hodgkin-Huxley gradient function

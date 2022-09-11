@@ -78,8 +78,15 @@ class InjectCurrent(BaseComponent):
         """
         return None
 
-    def compute(self, V_pre, V_post):
-        f"""
+    def reset_value(self):
+        """
+        reset inject current
+        """
+        self.count = 0
+        self.states = OrderedDict(I_ext=[], I_syn=[])
+
+    def compute(self, V_pre: float, V_post:float) -> dict:
+        """
         Injection current function
         query the current value from the generated input current
 

@@ -66,6 +66,21 @@ class PhotoInsensitiveNeuron(BaseComponent):
 
         return I_ext
 
+    def reset_value(self):
+        """
+        reset the photo insensitive neuron to its initial values
+        """
+        V_init = self.states['V'][0]
+        Y2_init = self.states['Y2'][0]
+        Y3_init = self.states['Y3'][0]
+        Y4_init = self.states['Y4'][0]
+        Y5_init = self.states['Y5'][0]
+        Y6_init = self.states['Y6'][0]
+        self.states = OrderedDict(
+            V=[V_init], Y2=[Y2_init], Y3=[Y3_init],
+            Y4=[Y4_init], Y5=[Y5_init], Y6=[Y6_init]
+        )
+
     def compute(self, I_syn: float, I_ext: float, dt:float) -> dict:
         """
         Photo Insensitive gradient function

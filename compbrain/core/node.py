@@ -1,5 +1,4 @@
 import abc
-import numpy as np
 
 
 class BaseComponent:
@@ -41,11 +40,17 @@ class BaseComponent:
         abstract method for computing the component value
         :return:
         """
-    def reset_value(self, recursive:bool =True):
-        self.value_array = np.append(self.value_array, self.value)
-        self.value = None
-        if recursive:
-            for child in self.children:
-                child.reset_value()
+
+    @abc.abstractmethod
+    def reset_value(self):
+        """
+        abstract method for resetting the components,
+        depends on the components type, it can either:
+
+        1. reset the components to their initial values
+        2. clear the states arrays
+
+        :return:
+        """
 
 

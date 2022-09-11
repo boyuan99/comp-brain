@@ -53,6 +53,12 @@ class CustomSynapse(BaseComponent):
 
         return V_post
 
+    def reset_value(self):
+        """
+        reset custom synapse
+        """
+        self.states = OrderedDict(I_ext=[], I_syn=[])
+
     def compute(self, V_pre: float, V_post: float) -> dict:
         """
         custom synapse function

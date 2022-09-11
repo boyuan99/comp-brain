@@ -30,6 +30,25 @@ class Circuit:
                 post_synaptic_neurons.append_parents(synapse)
                 synapse.append_children(post_synaptic_neurons)
 
+    def clear_circuit(self):
+        """
+        reset the whole circuit
+        1. clear neurons
+        2. clear synapses
+        """
+        self.neurons = []
+        self.synapses = []
+
+    def reset_circuit(self):
+        """
+        reset the components in the circuit to their initial values
+        """
+        for neuron in self.neurons:
+            neuron.reset_value()
+
+        for synapse in self.synapses:
+            synapse.reset_value()
+
     def find_neuron(self, name: str):
         """
         Find the instantiated neuron according its name
