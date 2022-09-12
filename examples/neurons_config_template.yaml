@@ -1,16 +1,70 @@
 neurons:
   PhotoInsensitive:
     R1:
+      C: 4.0
+      dt: 1e-4
+      E_Cl: 0.0
+      E_K: -70.0
+      g_L: 0.006,
+      g_K: 0.082
+      g_A: 1.6
+      g_dr: 3.5
+      g_nov: 3.0
 
     R2:
+      C: 4.0
+      dt: 1e-4
+      E_Cl: 0.0
+      E_K: -70.0
+      g_L: 0.006,
+      g_K: 0.082
+      g_A: 1.6
+      g_dr: 3.5
+      g_nov: 3.0
 
     R3:
+      C: 4.0
+      dt: 1e-4
+      E_Cl: 0.0
+      E_K: -70.0
+      g_L: 0.006,
+      g_K: 0.082
+      g_A: 1.6
+      g_dr: 3.5
+      g_nov: 3.0
 
     R4:
+      C: 4.0
+      dt: 1e-4
+      E_Cl: 0.0
+      E_K: -70.0
+      g_L: 0.006,
+      g_K: 0.082
+      g_A: 1.6
+      g_dr: 3.5
+      g_nov: 3.0
 
     R5:
+      C: 4.0
+      dt: 1e-4
+      E_Cl: 0.0
+      E_K: -70.0
+      g_L: 0.006,
+      g_K: 0.082
+      g_A: 1.6
+      g_dr: 3.5
+      g_nov: 3.0
 
     R6:
+      C: 4.0
+      dt: 1e-4
+      E_Cl: 0.0
+      E_K: -70.0
+      g_L: 0.006,
+      g_K: 0.082
+      g_A: 1.6
+      g_dr: 3.5
+      g_nov: 3.0
 
   MorrisLecar:
     L1:

@@ -1,5 +1,6 @@
 import numpy as np
-from tqdm import tqdm
+from tqdm import tqdm as tqdm
+from tqdm.notebook import tqdm as tqdm_notebook
 
 
 class Circuit:
@@ -83,7 +84,7 @@ class Circuit:
                 I_ext = neuron.get_I_ext()
                 _ = neuron.compute(I_syn, I_ext, dt)
 
-    def execute_circuit(self, t: np.ndarray):
+    def execute_circuit(self, t: np.ndarray, notebook: bool=False):
         """
         execute the whole circuit for all the time steps
         :param t: a time numpy array
@@ -91,8 +92,16 @@ class Circuit:
         """
         dt = t[1] - t[0]
 
-        for i in tqdm(range(len(t))):
-            if i < len(t)-1:
-                self.execute_step(dt)
-            else:
-                self.execute_step(dt, synapses_policy=True, neurons_policy=False)
+        if not notebook:
+            for i in tqdm(range(len(t))):
+                if i < len(t)-1:
+                    self.execute_step(dt)
+                else:
+                    self.execute_step(dt, synapses_policy=True, neurons_policy=False)
+
+        if notebook:
+            for i in tqdm_notebook(range(len(t))):
+                if i < len(t)-1:
+                    self.execute_step(dt)
+                else:
+                    self.execute_step(dt, synapses_policy=True, neurons_policy=False)
