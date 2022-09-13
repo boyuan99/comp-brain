@@ -1,9 +1,6 @@
 <p align="center">
   	<img alt="Logo image of Compbrain." src="./images/logo.png" width=80%>
 </p> 
-
-
-
 <p align="center">
 <a href="https://boyuan.io/research/comp_brain/docs/html/index.html"><img alt="Docs" src="https://img.shields.io/badge/docs-Compbrain-brightgreen.svg?style=flat-square"></a>
 <a href="https://boyuan.io/research/comp_brain/book/html/index.html"><img alt="Turtorial" src="https://img.shields.io/badge/tutorials-Compbrain-green.svg?style=flat-square"></a>
