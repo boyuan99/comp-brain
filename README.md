@@ -31,7 +31,5 @@ The following packages are required for ``BrainPy``:
 
 For detailed installation instructions, please refer to the page: [Installation](https://boyuan.io/research/comp_brain/book/html/Installation.html)
 
-https://github.com/PKU-NIP-Lab/BrainPy/blob/master/LICENSE)
-
 
 
