@@ -19,13 +19,13 @@ Compbrain is a tool for simulating brain circuits using multiple neurons and syn
 
 ## Install
 
-BrainPy is based on Python (>=3.7) and can be installed on  Linux (Ubuntu 16.04 or later), macOS (10.12 or later), and Windows platforms. Install the Compbrain
+CompBrain is based on Python (>=3.7) and can be installed on Linux, macOS, and Windows platforms. Install the Compbrain
 
 ```bash
 python setup.py develop
 ```
 
-The following packages are required for ``BrainPy``: 
+The following packages are required for ``CompBrain``: 
 
 `numpy ` and `pyyaml` 
 
